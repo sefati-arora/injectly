@@ -1,0 +1,57 @@
+module.exports=(Sequelize,sequelize,DataTypes) =>
+{
+    return sequelize.define(
+        "usertable",
+        {
+            ...require('./core')(Sequelize,DataTypes),
+            userName:{
+                type:DataTypes.STRING(50),
+                allowNull:true,
+            },
+            gender:{
+                type:DataTypes.INTEGER,
+                allowNull:true,
+                defaultValue:0    //0 for male and 1 for female
+            },
+            height:{
+                type:DataTypes.STRING(10),
+                allowNull:true,
+            },
+            weight:{
+                type:DataTypes.STRING(10),
+                allowNull:true,
+            },
+            age:{
+                type:DataTypes.STRING(10),
+                allowNull:true,
+            },
+            email:{
+                type:DataTypes.STRING(255),
+                 allowNull:true,
+            },
+             password:{
+                type:DataTypes.STRING(100),
+                allowNull:true,
+            },
+            otp:{
+            type:DataTypes.STRING(10),
+            allowNull:true,
+            defaultValue:null,
+         },
+          otpVerified:{
+            type:DataTypes.INTEGER,
+            allowNull:true,
+            defaultValue:0,
+        },
+        isprofileCompleted:
+        {
+            type:DataTypes.INTEGER,
+            allowNull:true,
+            defaultValue:0
+        }
+        },
+        {
+           tableName:"usertable"
+        }
+    )
+}
