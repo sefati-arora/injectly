@@ -170,6 +170,31 @@ module.exports = {
             return res.status(500).json({message:"ERROR "});
         }
     },
+    updateGoal:async(req,res) =>
+    {
+        try{
+             const{id,weight,calories,proteinIntake,waterIntake}=req.body;
+             const goal=await Models.addGoalModel.findOne({where:{id}});
+             if(!goal)
+             {
+               return res.status(404).json({message:"Goal not found"});
+              }
+              await Models.addGoalModel.update({
+                weight,
+                calories,
+                proteinIntake,
+                waterIntake
+              },
+            {
+              where:{id}
+            })
+             }
+            catch(error)
+        {
+          console.log(error);
+          return res.status(500).json({message:"ERROR"})
+        }
+        },
     EditGoal:async(req ,res) =>
     {
       try{
@@ -224,6 +249,32 @@ module.exports = {
           console.log(error);
           return res.status(500).json({ message: "ERROR IN ADD SHORT" });
         }
+      },
+      updateShort:async(req,res) =>
+      {
+         try
+         {
+           const{id,Date,time,shortNote}=req.body;
+           const short=await Models.addShortModel.findOne({where:{id}});
+           if(!short)
+           {
+            return res.status(404).json({message:"Short not found"});
+           }
+           await Models.addShortModel.update({
+              Date,
+              time,
+              shortNote
+           },
+          {
+            where:{id}
+          })
+          return res.status(200).json({message:"data updated!"});
+         }
+         catch(error)
+         {
+          console.log(error);
+          return res.status(500).json({message:"ERROR!"})
+         }
       },
        EditShort:async(req, res) =>
     {
