@@ -302,7 +302,7 @@ module.exports = {
           return res.status(500).json({message:"ERROR"})
         }
       },
-      logout:async(req, res) =>
+      AccountDelete:async(req, res) =>
        {
         try{
         const user=await Models.userModel.destroy({where:{id:req.user.id}});

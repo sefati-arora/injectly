@@ -28,5 +28,5 @@ router.post('/EditShort',authentication,userController.EditShort);
 router.post('/EditGoal',authentication,userController.EditGoal);
 router.post('/updateGoal',authentication,userController.updateGoal);
 router.post('/updateShort',authentication,userController.updateShort);
-router.post('/logout',authentication,userController.logout);
+router.post('/AccountDelete',authentication,userController.AccountDelete);
 module.exports=router;
